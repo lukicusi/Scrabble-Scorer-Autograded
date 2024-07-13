@@ -56,7 +56,7 @@ let vowelBonusScorer = function(word) {
       if (word.includes(['a', 'e', 'i', 'o', 'u'])) { //LUCAS i didnt include 'Y'
 			vowelStructurePts += 3;
 		 }else if (word.includes(['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'])) {
-         vowelStructurePts += 3;
+         vowelStructurePts += 1;
        } //LUCASSSSSSSSSSSSSSSSS should i add an else statement here for " " or nums?
    }
    return vowelStructurePts;
@@ -85,11 +85,11 @@ const scoringAlgorithms = [
 function scorerPrompt() { //LUCAS i dont think this needs a parameter
    let gradingChoice = input.question("Enter 0, 1, or 2 for a scoring algorithm: ");
    if (gradingChoice === "0") { //Lucas is this correct with ===?
-      console.log(simpleScorer(word)); //LUCAS tried (), word, tast1word, do i need to declare a new variable?
+      console.log(simpleScorer(task1Word)); //LUCAS tried (), word, tast1word, do i need to declare a new variable?
    }else if (gradingChoice === "1") {
-      console.log(vowelBonusScorer(word));
+      console.log(vowelBonusScorer(task1Word));
    }else if (gradingChoice === "2") {
-      console.log(oldScrabbleScorer(word));
+      console.log(oldScrabbleScorer(task1Word));
    } //LUCAS maybe do else here and log "invalid try again" and loop it back to prompt
    return gradingChoice; //LUCAS do i pass in (word)?
 } //;LUCAS does this need ';'?

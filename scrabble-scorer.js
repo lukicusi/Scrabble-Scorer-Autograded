@@ -68,27 +68,27 @@ const scoringAlgorithms = [
    {
       "name": "Simple Score",
       "description": "Each letter is worth 1 point.",
-      "scorerFunction": simpleScorer() //LUCAS functions at these places correct? or need to call function() ?
+      "scorerFunction": simpleScorer //LUCAS functions at these places correct? or need to call function() ?
    },
    {
       "name": "Bonus Vowels",
       "description": "Vowels are 3 pts, consonants are 1 pt.",
-      "scorerFunction": vowelBonusScorer() //LUCAS do these need ';'? or maybe even pass in (word)
+      "scorerFunction": vowelBonusScorer //LUCAS do these need ';'? or maybe even pass in (word)
    },
    {
       "name": "Scrabble",
       "description": "The traditional scoring algorithm.",
-      "scorerFunction": oldScrabbleScorer()
+      "scorerFunction": oldScrabbleScorer
    }
 ]; //Lucas idk if i need this ";"
 
 function scorerPrompt() { //LUCAS i dont think this needs a parameter
    let gradingChoice = input.question("Enter 0, 1, or 2 for a scoring algorithm: ");
-   if (gradingChoice === 0) { //Lucas is this correct with ===?
-      console.log(simpleScorer(word)); //LUCAS is the () word, tast1word, or a new variable?
-   }else if (gradingChoice === 1) {
+   if (gradingChoice === "0") { //Lucas is this correct with ===?
+      console.log(simpleScorer(word)); //LUCAS tried (), word, tast1word, do i need to declare a new variable?
+   }else if (gradingChoice === "1") {
       console.log(vowelBonusScorer(word));
-   }else if (gradingChoice === 2) {
+   }else if (gradingChoice === "2") {
       console.log(oldScrabbleScorer(word));
    } //LUCAS maybe do else here and log "invalid try again" and loop it back to prompt
    return gradingChoice; //LUCAS do i pass in (word)?

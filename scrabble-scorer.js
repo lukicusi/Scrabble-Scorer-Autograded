@@ -53,8 +53,9 @@ function simpleScorer (word) {
 let vowelBonusScorer = function(word) {
    word = word.toUpperCase();
 	let vowelStructurePts = 0;
-   for (let i = 0; i < word.length; i++) {
-      if (['A', 'E', 'I', 'O', 'U'].includes(word[i])) { //LUCAS i didnt include 'Y'
+   let vowelArray = ['A', 'E', 'I', 'O', 'U'];
+   for (let i = 0; i < word.length; i++) { 
+      if (vowelArray.includes(word[i])) { //LUCAS i didnt include 'Y'
 //(word.includes(['a', 'e', 'i', 'o', 'u'])) { LUCASSSSSS first attempt- save in case current is wrong .includes syntax but this one wasnt passing my npm tests
          vowelStructurePts += 3; //LUCASSS1!!!! above maybe change ([aeiou].includes(word[i])) {
 		 }else {

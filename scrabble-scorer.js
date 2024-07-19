@@ -39,7 +39,7 @@ function initialPrompt() {
  return task1Word;
 };
 
-let newPointStructure;
+//let newPointStructure = transform(oldPointStructure); //LUCAS! is this ok here? or need to move into transform function?
 
 function simpleScorer (word) { 
    word = word.toUpperCase();
@@ -65,7 +65,15 @@ let vowelBonusScorer = function(word) {
    return vowelStructurePts;
 };
 
-let scrabbleScorer;
+function scrabbleScorer(word) {
+   word = word.toLowerCase();
+	let newLetterPoints = 0;
+   for (let i = 0; i < word.length; i++) {
+   newLetterPoints += newPointStructure[word[i]];
+   }
+   return newLetterPoints;
+}	
+
 
 const scoringAlgorithms = [
    {
@@ -81,7 +89,7 @@ const scoringAlgorithms = [
    {
       "name": "Scrabble",
       "description": "The traditional scoring algorithm.",
-      "scorerFunction": oldScrabbleScorer
+      "scorerFunction": scrabbleScorer //LUCASSSSSS replaced with my new function
    }
 ]; //Lucas idk if i need this ";"
 
@@ -97,7 +105,25 @@ function scorerPrompt() { //LUCAS i dont think this needs a parameter
    return scoringAlgorithms; 
 } 
 
-function transform() {};
+function transform(oldStructureObj) { 
+let newStructure = {};
+
+   for (let points in oldStructureObj) {
+      let letters = oldStructureObj[points]; 
+      for (let i = 0; i < letters.length; i++) {
+         let letter = letters[i].toLowerCase();
+         newStructure[letter] = Number(points); //LUCASSSS need points into num type IM GETTING A SYNTAX ERROR HERE
+         // LUCAS above: syntax error: Invalid left-hand side in assignment expression.
+      }
+   }
+return newStructure;
+}//LUCAS navigates thru oldptstructure and makes new with letters as keys LOWERCASE and numbers as values for the keys
+
+let newPointStructure = transform(oldPointStructure);
+//for (item in oldPointStructure) { //LUCASSSS im not sure if my for...in loop needs to be inside of this function
+   //make each item a key and assign it the pt value Lucasssss
+//let oldPointStructure[0].split.toLowerCase = onePoint // LUCAS i might have to split these arrays and then make tolowercase
+
 
 function runProgram() {
    let task1Word = initialPrompt();
